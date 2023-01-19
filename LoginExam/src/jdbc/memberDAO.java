@@ -40,4 +40,19 @@ public class memberDAO {
 		
 		return 0;//아이디와 비밀번호 모두 일치하는 경우 
 	}
+	
+	public static int exist(String memail) throws NamingException, SQLException {
+		String sql = "SELECT memail FROM member WHERE memail=?";
+		
+		Connection conn = ConnectionPool.get();
+		
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memail);
+		
+		ResultSet rs = pstmt.executeQuery();
+		
+		if(!rs.next()) return 1;//디비에 회원 정보가 전혀 없는 경우 
+		
+		return 0;//디비에 존재하는 경우 
+	}
 }

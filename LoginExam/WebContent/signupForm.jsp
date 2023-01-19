@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,7 +26,13 @@
 </head>
 
 <body class="bg-gradient-primary">
+<%
+	request.setCharacterEncoding("utf-8");
 
+    		String mname = request.getParameter("mname");
+	String memail = request.getParameter("memail");
+	String mgender = request.getParameter("mgender");
+%>
     <div class="container">
 
         <div class="card o-hidden border-0 shadow-lg my-5">
@@ -46,7 +53,7 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="text" class="form-control form-control-user" name="mid"
-                                            placeholder="ID">
+                                            value=<%=mname %> readonly>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -56,17 +63,20 @@
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="email" class="form-control form-control-user" name="memail"
-                                       		placeholder="Email Address">
+                                       		value=<%=memail %> readonly>
                                     </div>
                                     <div class="col-sm-6">
+                                    <%if(mgender.equals("male")) {%>
                                     	<div class="form-check form-check-inline">
-										  <input class="form-check-input" type="checkbox" name="mgender" value="Male">
+										  <input class="form-check-input" type="checkbox" name="mgender" value="Male" checked>
 										  <label class="form-check-label" for="inlineCheckbox1">Male</label>
 										</div>
+									<%} else { %>
 										<div class="form-check form-check-inline">
-										  <input class="form-check-input" type="checkbox" name="mgender" value="Female">
+										  <input class="form-check-input" type="checkbox" name="mgender" value="Female" checked>
 										  <label class="form-check-label" for="inlineCheckbox2">Female</label>
 										</div>
+									<%} %>
                                     </div>
                                 </div>
                                 
