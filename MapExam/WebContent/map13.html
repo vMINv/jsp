@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Kakao 인포윈도우 생성</title>
+</head>
+<body>
+
+<div id="map" style="width:100%;height:350px;"></div>
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=fc7abe9b9479ffa297474094a4964dcf"></script>
+
+<script>
+	var container = document.getElementById('map');
+	
+	var options = {
+		center: new kakao.maps.LatLng(37.522262, 126.850055),
+		level: 3
+	};
+	
+	var map = new kakao.maps.Map(container, options);
+	
+	//창에 나타낼 정보 작성
+	var iwContent = '<div style="padding:5px;">Hello World <br>환영합니다.<div>'
+		iwPosition = new kakao.maps.LatLng(37.522262, 126.850055),
+		iwRemovable = true;
+	
+	//창 생성
+	var infowindow = new kakao.maps.InfoWindow({
+		map: map,
+		position: iwPosition,
+		content: iwContent,
+		removable: iwRemovable
+	})
+</script>
+</body>
+</html>

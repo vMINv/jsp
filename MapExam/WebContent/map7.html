@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Kakao 지도 범위 재설정</title>
+</head>
+<body>
+지도 표시할 영역 만들기 
+<div id="map" style="width:100%;height:350px;"></div>
+<br>
+<button onclick="setBounds()">지도범위재설정</button>
+지도 API 호출 
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=fc7abe9b9479ffa297474094a4964dcf"></script>
+
+<script>
+	var container = document.getElementById('map');
+	
+	var options = {
+		center: new kakao.maps.LatLng(33.450701, 126.570667),
+		level: 3
+	};
+	
+	var map = new kakao.maps.Map(container, options);
+	
+	//표시할 좌표 값들 변수 설정 	
+	var points = [
+		new kakao.maps.LatLng(33.452278, 126.567803),
+		new kakao.maps.LatLng(33.452671, 126.574792),
+		new kakao.maps.LatLng(33.451744, 126.572441)
+	];
+	
+	//지도 재설정 범위 정보 객체 생성
+	var bounds = new kakao.maps.LatLngBounds();
+	
+	//세개의 좌표 값을 지도에 올리기
+	var i, maker;
+	for(i=0; i<points.length; i++){
+		//하나씩 지도에 추가 
+		marker = new kakao.maps.Marker({position:points[i]});
+		marker.setMap(map);
+		
+		//bound 객체에 좌표 추가 
+		bounds.extend(points[i]);
+	}
+	
+	//지도의 중심좌표와 레벨이 변경될 수 있다 
+	function setBounds(){
+		map.setBounds(bounds);
+	}
+</script>
+</body>
+</html>

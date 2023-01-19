@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Kakao 다른이미지로 마커 생성하기</title>
+</head>
+<body>
+
+<div id="map" style="width:100%;height:350px;"></div>
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=fc7abe9b9479ffa297474094a4964dcf"></script>
+
+<script>
+	var container = document.getElementById('map');
+	
+	var options = {
+		center: new kakao.maps.LatLng(37.522262, 126.850055),
+		level: 3
+	};
+	
+	var map = new kakao.maps.Map(container, options);
+	
+	//마커로 사용할 사진 설정
+	var imageSrc = 'kermit.jpeg',
+		imageSize = new kakao.maps.Size(64,69),
+		imageIption = {offset: new kakao.maps.Point(27,69)};
+	
+	var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageIption),
+		markerPosition = new kakao.maps.LatLng(37.522262, 126.850055);
+	
+	//마커 생성
+	var marker = new kakao.maps.Marker({
+		position: markerPosition,
+		image: markerImage
+	});
+	
+	//마커 지도에 올리기
+	marker.setMap(map);
+</script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Kakao 마커에마우스이벤트</title>
+</head>
+<body>
+
+<div id="map" style="width:100%;height:350px;"></div>
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=fc7abe9b9479ffa297474094a4964dcf"></script>
+
+<script>
+	var container = document.getElementById('map');
+	
+	var options = {
+		center: new kakao.maps.LatLng(37.522262, 126.850055),
+		level: 3
+	};
+	
+	var map = new kakao.maps.Map(container, options);
+	
+	//마커
+	//마커 위치
+	var	position = new kakao.maps.LatLng(37.522262, 126.850055);
+	
+	//마커 생성
+	var marker = new kakao.maps.Marker({
+		position: position
+	});
+	
+	//마커 표시 
+	marker.setMap(map);
+	
+	//마커에 마우스를 올렸을때 인포 윈도우 표시
+	//인포윈도우 메세지 
+	var iwContent="<h5>환영환영</h5>";
+	
+	//인포윈도우 객체 생성
+	var infowindow = new kakao.maps.InfoWindow({
+		content: iwContent
+	});
+	
+	//마커에 마우스를 올렸을 때 이벤트 발생
+	kakao.maps.event.addListener(marker, 'mouseover', function(){
+		infowindow.open(map, marker);
+	});
+	
+	//마커에서 마우스가 멀어졌을때 이벤트 생성
+	kakao.maps.event.addListener(marker, 'mouseout', function(){
+		infowindow.close();
+	});
+</script>
+</body>
+</html>
