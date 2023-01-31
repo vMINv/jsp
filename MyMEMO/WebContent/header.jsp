@@ -28,7 +28,7 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Admin</a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="/userAll.jsp">회원관리</a></li>
+                <li><a class="dropdown-item" href="ajax/userAllAJAX.jsp">회원관리</a></li>
                 <li><a class="dropdown-item" href="/feedAll.jsp">메모관리</a></li>
                 <li><a class="dropdown-item" href="/logout.jsp">로그아웃</a></li>
               </ul>
