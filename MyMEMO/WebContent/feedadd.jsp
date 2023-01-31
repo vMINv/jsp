@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"
-    import="jdbc.*, java.util.*"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,6 +8,8 @@
 </head>
 <body>
 <%@ include file="header.jsp" %>
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 <% 
 //	String sid = (String) session.getAttribute("id");//header에서 이미 선언 타입 지정 X 
 	sid = (String) session.getAttribute("id");
@@ -43,31 +44,37 @@
 <%} else {
 	session.setAttribute("id", sid);
 }%>
-	<br>
-	<div class="container">
-	<table class="table table-striped">
-	  <thead>
-	    <tr>
-	      <th scope="col">No</th>
-	      <th scope="col">ID</th>
-	      <th scope="col">Date</th>
-	      <th scope="col">Content</th>
-	    </tr>
-	  </thead>
-	  <tbody>
-<%	ArrayList<FeedDTO> feeds = FeedDAO.getList(sid);
-	for (FeedDTO feed:feeds){
-%>
-	    <tr>
-	      <th scope="row"><%=feed.getNo() %></th>
-	      <td><%=feed.getId() %></td>
-	      <td><%=feed.getTs() %></td>
-	      <td><%=feed.getContent() %></td>
-	    </tr>
-<%	} %>
-	  </tbody>
-	</table>
-	</div>
+<br>
+<div class="container">
+	<form action="feedCheck.jsp" method="post">
+		<input type="hidden" name="id" value="<%=sid %>"> 
+		<div class="mb-3">
+		<textarea class="form-control" name="content" id="summernote" rows="3" placeholder="작성글"></textarea>
+		</div>
+		<div class="mb-3">
+		<button type="submit" class="form-control btn btn-outline-secondary">업로드하기</button>
+		</div>
+	</form>
+</div>
+	
+<div id="summernote"></div>
+    <script>
+      $('#summernote').summernote({
+        placeholder: '작성글',
+        tabsize: 2,
+        height: 120,
+        toolbar: [
+          ['style', ['style']],
+          ['font', ['bold', 'underline', 'clear']],
+          ['color', ['color']],
+          ['para', ['ul', 'ol', 'paragraph']],
+          ['table', ['table']],
+          ['insert', ['link', 'picture', 'video']],
+          ['view', ['fullscreen', 'codeview', 'help']]
+        ]
+      });
+    </script>
+    
 <%@ include file="footer.jsp" %>
 </body>
 </html>

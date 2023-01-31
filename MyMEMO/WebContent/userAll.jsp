@@ -48,21 +48,19 @@
 	<table class="table table-striped">
 	  <thead>
 	    <tr>
-	      <th scope="col">No</th>
 	      <th scope="col">ID</th>
+	      <th scope="col">Name</th>
 	      <th scope="col">Date</th>
-	      <th scope="col">Content</th>
 	    </tr>
 	  </thead>
 	  <tbody>
-<%	ArrayList<FeedDTO> feeds = FeedDAO.getList(sid);
-	for (FeedDTO feed:feeds){
+<%	ArrayList<UserDTO> users = UserDAO.list();
+	for (UserDTO user:users){
 %>
 	    <tr>
-	      <th scope="row"><%=feed.getNo() %></th>
-	      <td><%=feed.getId() %></td>
-	      <td><%=feed.getTs() %></td>
-	      <td><%=feed.getContent() %></td>
+	      <th><%=user.getId() %></th>
+	      <td><%=user.getName() %></td>
+	      <td><%=user.getTs() %></td>
 	    </tr>
 <%	} %>
 	  </tbody>

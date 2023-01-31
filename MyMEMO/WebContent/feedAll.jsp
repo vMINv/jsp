@@ -41,7 +41,6 @@
 		</script>		
 		
 <%} else {
-	session.setAttribute("id", sid);
 }%>
 	<br>
 	<div class="container">
@@ -55,7 +54,7 @@
 	    </tr>
 	  </thead>
 	  <tbody>
-<%	ArrayList<FeedDTO> feeds = FeedDAO.getList(sid);
+<%	ArrayList<FeedDTO> feeds = FeedDAO.getAllList();
 	for (FeedDTO feed:feeds){
 %>
 	    <tr>

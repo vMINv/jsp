@@ -51,10 +51,10 @@
 		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 		      </div>
 		      <div class="modal-body">
-		       환영합니다. 메인 페이지로 이동합니다.
+		       환영합니다. 로그인 페이지로 이동합니다.
 		      </div>
 		      <div class="modal-footer">
-		        <button onclick="location.href='main.jsp'" class="btn btn-primary">메인페이지</button>
+		        <button onclick="location.href='login.jsp'" class="btn btn-primary">로그인 페이지</button>
 		      </div>
 		    </div>
 		  </div>

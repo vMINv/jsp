@@ -8,6 +8,9 @@ import java.util.ArrayList;
 
 import javax.naming.NamingException;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
 import util.ConnectionPool;
 
 public class UserDAO {
@@ -129,6 +132,41 @@ public class UserDAO {
 			}
 			
 			return users;
+			
+		} finally {
+			if(rs != null) rs.close();
+			if(pstmt != null) pstmt.close();
+			if(conn != null) conn.close();
+		}
+	}
+	
+	//회원목록 AJAX
+	public static String listAJAX() throws NamingException, SQLException {
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			String sql = "SELECT * FROM user ORDER BY ts DESC";
+			
+			conn = ConnectionPool.get();
+			pstmt = conn.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			JSONArray users = new JSONArray();
+			while(rs.next()) {
+				JSONObject obj = new JSONObject();
+				obj.put("id", rs.getString(1));
+				obj.put("password", rs.getString(2));
+				obj.put("name", rs.getString(3));
+				obj.put("ts", rs.getString(4));
+				
+				users.add(obj);
+			}
+			
+			return users.toJSONString();
 			
 		} finally {
 			if(rs != null) rs.close();

@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%@ include file="header.jsp" %>
+<%@ include file="../header.jsp" %>
 <br>
 <div class="container">
 	<div class="mb-3">
@@ -77,6 +77,6 @@ function validatePassword(){
 password.onchange = validatePassword;
 passwordCheck.onkeyup = validatePassword;
 </script>
-<%@ include file="footer.jsp" %>
+<%@ include file="../footer.jsp" %>
 </body>
 </html>
