@@ -5,8 +5,8 @@
 	type="javax.sql.DataSource"
 	driverClassName="com.mysql.jdbc.Driver"
 	url="jdbc:mysql://localhost:3306/univ?serverTimezone=UTC"
-	username="root"
-	password="0000"
+	username="username"
+	password="password"
 	maxTotal="16"
 	maxIdle="4"
 	maxWaitMillis="-1"/>
