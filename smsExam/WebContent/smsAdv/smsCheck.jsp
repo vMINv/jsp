@@ -75,8 +75,8 @@
     String  action     = nullcheck(request.getParameter("action"), "");
     String sms_url = "";
     sms_url = "https://sslsms.cafe24.com/sms_sender.php"; // SMS 전송요청 URL
-    String user_id = base64Encode("gusals98"); // SMS아이디
-    String secure = base64Encode("6ff8354984d76eca61fafbf93835c1ad");//인증키
+    String user_id = base64Encode("SMS아이디"); // SMS아이디
+    String secure = base64Encode("인증키");//인증키
     String msg = base64Encode(nullcheck(request.getParameter("msg"), ""));
     String rphone = base64Encode(nullcheck(request.getParameter("rphone"), ""));
     String sphone1 = base64Encode("010");
