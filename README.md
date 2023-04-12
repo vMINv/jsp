@@ -6,4 +6,5 @@
   <li>Map API</li>
   <li>AJAX</li>
   <li>Social Login</li>
+  <li>Connection Pool</li>
 </ul>
