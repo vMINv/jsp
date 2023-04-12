@@ -2,5 +2,5 @@
 <p>JSP projects</p>
 <li>
   <ul>Mail API
-  sms API<ul>
+  sms API</ul>
 </li>
