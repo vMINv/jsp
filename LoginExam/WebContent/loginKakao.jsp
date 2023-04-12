@@ -13,7 +13,7 @@
 <script src="http://developers.kakao.com/sdk/js/kakao.js"></script>
 <script>
 	//발급받은 키
-	Kakao.init("fc7abe9b9479ffa297474094a4964dcf");
+	Kakao.init("발급받은 키");
 	
 	function kakaologin(){
 		window.Kakao.Auth.login({
